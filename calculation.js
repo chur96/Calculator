@@ -1,21 +1,21 @@
 
 function add(x,y){
-    return parseInt(x) + parseInt(y);
+    return parseFloat(x) + parseFloat(y);
 }
 
 
 function subtract(x,y){
-    return parseInt(x) - parseInt(y);
+    return parseFloat(x) - parseFloat(y);
 }
 
 
 function multiply(x,y){
-    return parseInt(x) * parseInt(y);
+    return parseFloat(x) * parseFloat(y);
 }
 
 
 function divide(x,y){
-    return parseInt(x) / parseInt(y);
+    return parseFloat(x) / parseFloat(y);
 }
 
 function operate(operands, operators){
@@ -25,23 +25,18 @@ function operate(operands, operators){
         let operator = operators[idx-1]
 
         switch (operator) {
-            case '+':
-                console.log(first, operator, next)
+            case '+': 
                 return add(first, next)
-            case '-':
-                console.log(first, operator, next)
+            case '-': 
                 return subtract(first, next)
-            case '*':
-                console.log(first, operator, next)
+            case '*': 
                 return multiply(first, next)
-            case '/':
-                console.log(first, operator, next)
+            case '/': 
                 return divide(first, next)
         }       
 
     })
-    console.log(final);
-    return final 
+    return Math.round(final * 10000) / 10000 
 
 }
 
@@ -65,7 +60,7 @@ buttons.forEach(button => {
         if (button.textContent == '=') {
             let eq =  document.querySelector('.calculator-display').textContent;
             let operands = document.querySelector('.calculator-display').textContent.split(/\+|\-|\*|\//g);
-            let operators = eq.replace(/\d+/g,'').split('');
+            let operators = eq.replace(/\d+|\./g,'').split('');
             result = operate(operands, operators);
             display.textContent = result;
         } 

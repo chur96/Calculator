@@ -63,9 +63,11 @@ buttons.forEach(button => {
             let operators = eq.replace(/\d+|\./g,'').split('');
             result = operate(operands, operators);
             display.textContent = result;
-        } 
+        }
         else {
-            display.textContent += button.textContent;
+            if (button.textContent == '.' && display.textContent.indexOf('.') != -1) {
+            }
+            else {display.textContent += button.textContent};
         }
 
         
